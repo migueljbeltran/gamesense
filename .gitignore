@@ -179,3 +179,43 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# Project planning docs kept local
+AGENTS.md
+implementation.md
+prd.md
+
+# Local environment files
+.env*
+!.env.example
+!.env.*.example
+
+# Node and frontend
+node_modules/
+.next/
+out/
+next-env.d.ts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# GameSense local artifacts
+artifacts/
+worker_artifacts/
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+
+# Terraform local state
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json

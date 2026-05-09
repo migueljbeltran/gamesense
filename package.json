@@ -1,0 +1,21 @@
+{
+  "name": "gamesense",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/frontend",
+    "packages/shared-types"
+  ],
+  "scripts": {
+    "dev": "npm run frontend:dev",
+    "api:dev": ".\\.venv\\Scripts\\python.exe -m uvicorn app.main:app --reload --app-dir apps/api --host 0.0.0.0 --port 8000",
+    "worker:dev": ".\\.venv\\Scripts\\python.exe -m worker.main",
+    "infra:up": "docker compose -f infrastructure/docker/docker-compose.yml up postgres qdrant localstack",
+    "infra:down": "docker compose -f infrastructure/docker/docker-compose.yml down",
+    "test:python": ".\\.venv\\Scripts\\python.exe -m pytest apps/api/tests apps/worker/tests -q",
+    "frontend:dev": "npm run dev --workspace apps/frontend",
+    "frontend:build": "npm run build --workspace apps/frontend",
+    "frontend:typecheck": "npm run typecheck --workspace apps/frontend",
+    "shared:typecheck": "npm run typecheck --workspace packages/shared-types"
+  }
+}

@@ -1,0 +1,8 @@
+pydantic-settings
+boto3
+sqlalchemy
+psycopg[binary]
+qdrant-client
+openai
+anthropic
+pytest
