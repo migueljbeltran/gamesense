@@ -6,3 +6,4 @@ qdrant-client
 openai
 anthropic
 pytest
+pytest-asyncio
