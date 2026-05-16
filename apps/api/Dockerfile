@@ -1,13 +1,19 @@
-FROM python:3.12-slim
+FROM golang:1.24-alpine AS build
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+WORKDIR /src
+
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -o /bin/gamesense-api ./cmd/api
+
+FROM alpine:3.21
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY --from=build /bin/gamesense-api /app/gamesense-api
 
-COPY app ./app
+EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["/app/gamesense-api"]

@@ -43,6 +43,9 @@ services:
       - "8000:8000"
     env_file:
       - ../../apps/api/.env.dev
+    environment:
+      DATABASE_URL: postgres://gamesense:gamesense@postgres:5432/gamesense?sslmode=disable
+      AWS_ENDPOINT_URL: http://localstack:4566
     depends_on:
       postgres:
         condition: service_healthy
@@ -50,10 +53,6 @@ services:
         condition: service_started
       localstack:
         condition: service_started
-    volumes:
-      - ../../apps/api:/app
-    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-
   worker:
     build:
       context: ../../apps/worker

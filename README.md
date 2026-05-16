@@ -5,7 +5,7 @@ Cloud-native gameplay intelligence platform for semantic VOD retrieval, behavior
 ## Repository Layout
 
 - `apps/frontend`: Next.js frontend starter.
-- `apps/api`: FastAPI backend starter with `GET /health`.
+- `apps/api`: Go API starter with chi routing and `GET /health`.
 - `apps/worker`: Python worker placeholder for future SQS processing.
 - `packages`: shared types, prompts, and eval placeholders.
 - `infrastructure/docker`: local Postgres, Qdrant, LocalStack, API, and worker compose setup.
@@ -55,5 +55,6 @@ npm run frontend:dev
 
 - `npm run dev`: start the frontend on port 3000.
 - `npm run api:dev`: start the API on port 8000.
+- `npm run api:test`: run Go API tests.
 - `npm run infra:up`: start Postgres, Qdrant, and LocalStack.
-- `npm run test:python`: run API and worker tests.
+- `npm run test:python`: run worker Python tests.
